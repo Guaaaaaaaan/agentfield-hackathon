@@ -5,6 +5,9 @@ import json
 from pathlib import Path
 from typing import Any
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from src.agents.collection_strategy_reasoner import collection_strategy_reasoner
 from src.agents.execute_and_audit_skill import execute_and_audit_skill
 from src.agents.invoice_risk_reasoner import invoice_risk_reasoner
