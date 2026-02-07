@@ -1,5 +1,6 @@
 ﻿from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
 from typing import Any
@@ -70,10 +71,16 @@ class AuditEvent:
     risk_level: str | None = None
     next_action: str | None = None
     fallback: bool = False
-    detail: str | None = None
+    detail: str | dict | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return asdict(self)
+        d = asdict(self)
+        if isinstance(self.detail, str):
+            try:
+                d["detail"] = json.loads(self.detail)
+            except (json.JSONDecodeError, TypeError):
+                pass
+        return d
 
 
 def build_event_id(trace_id: str, seq: int) -> str:

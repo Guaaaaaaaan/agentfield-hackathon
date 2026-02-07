@@ -61,9 +61,54 @@ def _load_inputs(input_path: str) -> list[InvoiceInput]:
     raise ValueError("input payload must be a JSON object or list of objects")
 
 
+def _print_demo_output(outputs: list[dict[str, Any]]) -> None:
+    print("=== Intelligent Billing Operations Engine (MVP Demo) ===")
+    print()
+
+    success = 0
+    failed = 0
+    fallback = 0
+    total = len(outputs)
+
+    for idx, item in enumerate(outputs, start=1):
+        invoice_id = str(item.get("invoice_id", "N/A"))
+        risk_level = str(item.get("risk_level", "unknown"))
+        confidence = float(item.get("confidence", 0.0))
+        reasons_list = item.get("reasons", [])
+        reasons = "; ".join(str(reason) for reason in reasons_list) if reasons_list else "none"
+        channel = str(item.get("channel", "N/A"))
+        tone = str(item.get("tone", "N/A"))
+        escalation = bool(item.get("escalation", False))
+        next_action = str(item.get("next_action", "N/A"))
+        audit_event = item.get("audit_event") if isinstance(item.get("audit_event"), dict) else {}
+        status = str(audit_event.get("status", "unknown"))
+        trace_id = str(item.get("trace_id", "N/A"))
+        is_fallback = bool(item.get("fallback", False))
+
+        if status in {"sent", "queued"}:
+            success += 1
+        elif status == "failed":
+            failed += 1
+        if is_fallback:
+            fallback += 1
+
+        print(f"[{idx}/{total}] Invoice: {invoice_id}")
+        print(f"  Risk:     {risk_level} (confidence: {confidence:.2f})")
+        print(f"  Reasons:  {reasons}")
+        print(f"  Strategy: channel={channel}, tone={tone}, escalation={str(escalation).lower()}")
+        print(f"  Action:   {next_action}")
+        print(f"  Status:   {status}")
+        print(f"  Trace:    {trace_id}")
+        print()
+
+    print("=== Summary ===")
+    print(f"Total: {total} | Success: {success} | Failed: {failed} | Fallback: {fallback}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run billing orchestration demo flow.")
     parser.add_argument("--use-mock", action="store_true", help="Use local mock adapters for debug only.")
+    parser.add_argument("--json", action="store_true", help="Output raw JSON payload.")
     parser.add_argument(
         "--input",
         default="data/samples/pipeline_inputs_runtime.json",
@@ -86,8 +131,11 @@ def main() -> None:
         )
         for idx, invoice in enumerate(inputs, start=1)
     ]
-    output: dict[str, Any] | list[dict[str, Any]] = outputs[0] if len(outputs) == 1 else outputs
-    print(json.dumps(output, ensure_ascii=True, indent=2))
+    if args.json:
+        output: dict[str, Any] | list[dict[str, Any]] = outputs[0] if len(outputs) == 1 else outputs
+        print(json.dumps(output, ensure_ascii=True, indent=2))
+    else:
+        _print_demo_output(outputs)
 
 
 if __name__ == "__main__":

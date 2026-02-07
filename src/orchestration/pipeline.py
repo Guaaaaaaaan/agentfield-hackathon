@@ -1,6 +1,4 @@
 from __future__ import annotations
-
-import json
 from datetime import datetime, timezone
 from typing import Any, Callable
 
@@ -100,7 +98,7 @@ def run_pipeline(
         seq += 1
 
     execution_event_type = "execution"
-    execution_detail: str | None = None
+    execution_detail: str | dict | None = None
     try:
         raw_exec_result = executor(strategy)
         exec_status, exec_payload = normalize_execution_result(raw_exec_result)
@@ -108,7 +106,7 @@ def run_pipeline(
             used_fallback = True
             execution_event_type = "execution_error"
         if exec_payload:
-            execution_detail = json.dumps(exec_payload, ensure_ascii=True)
+            execution_detail = exec_payload
     except Exception as exc:
         used_fallback = True
         execution_event_type = "execution_error"

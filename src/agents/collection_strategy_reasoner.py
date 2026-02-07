@@ -28,9 +28,8 @@ def collection_strategy_reasoner(invoice: InvoiceInput, risk: RiskAssessment) ->
     if not invoice.invoice_id:
         raise StrategyReasoningError("INVALID_INVOICE", "invoice_id is required")
 
-    channel = _normalize_channel(invoice.preferred_channel)
-
     if risk.risk_level == "high":
+        channel = _normalize_channel(invoice.preferred_channel)
         strategy = CollectionStrategy(
             invoice_id=invoice.invoice_id,
             channel="call_queue" if invoice.overdue_days >= 45 else channel,
@@ -39,6 +38,9 @@ def collection_strategy_reasoner(invoice: InvoiceInput, risk: RiskAssessment) ->
             escalation=True,
         )
     elif risk.risk_level == "medium":
+        channel = _normalize_channel(invoice.preferred_channel)
+        if channel == "call_queue":
+            channel = "sms"
         strategy = CollectionStrategy(
             invoice_id=invoice.invoice_id,
             channel=channel,
@@ -49,7 +51,7 @@ def collection_strategy_reasoner(invoice: InvoiceInput, risk: RiskAssessment) ->
     elif risk.risk_level == "low":
         strategy = CollectionStrategy(
             invoice_id=invoice.invoice_id,
-            channel=channel,
+            channel="email",
             tone="gentle",
             next_action="friendly_reminder_72h",
             escalation=False,
