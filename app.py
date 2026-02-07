@@ -87,6 +87,10 @@ def _print_demo_output(outputs: list[dict[str, Any]]) -> None:
         status = str(audit_event.get("status", "unknown"))
         trace_id = str(item.get("trace_id", "N/A"))
         is_fallback = bool(item.get("fallback", False))
+        org_name = str(item.get("org_name", "org"))
+        email_address = str(item.get("email_address", "-"))
+        phone_number = str(item.get("phone_number", "-"))
+        scheduled_contact_date = str(item.get("scheduled_contact_date", "-"))
 
         if status in {"sent", "queued"}:
             success += 1
@@ -102,6 +106,10 @@ def _print_demo_output(outputs: list[dict[str, Any]]) -> None:
         print(f"  Action:   {next_action}")
         print(f"  Status:   {status}")
         print(f"  Trace:    {trace_id}")
+        print(f"  Organization: {org_name}")
+        print(f"  Email:    {email_address}")
+        print(f"  Phone:    {phone_number}")
+        print(f"  Scheduled: {scheduled_contact_date}")
         print()
 
     print("=== Summary ===")
