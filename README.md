@@ -77,15 +77,25 @@ agentfield_Hackthon/
 └── scripts/
 ```
 
-### Local Run
+### Quick Start
 ```powershell
-python -m venv .venv
-.venv\Scripts\activate
-pip install pydantic pytest
-python app.py
-python app.py --input data/samples/pipeline_inputs_runtime.json
-python -m pytest -q -p no:cacheprovider
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Configure API key (required for AI reasoning)
+cp .env.example .env
+# Edit .env and set your GEMINI_API_KEY
+
+# 3. Run
+python app.py              # formatted demo output
+python app.py --json       # raw JSON output
+python app.py --use-mock   # offline mode (no API key needed)
+
+# 4. Test
+python -m pytest -q
 ```
+
+> **Note:** Without a valid `GEMINI_API_KEY` in `.env`, the system automatically falls back to rule-based reasoning. AI reasoning requires a [Google Gemini API key](https://aistudio.google.com/apikey).
 
 ### Demo Input And Expected Output (English)
 Demo input (`app.py` default):
@@ -145,6 +155,26 @@ Out of Scope：
 - `reasons`
 - `next_action`
 - `audit_event`
+
+### 快速开始
+```powershell
+# 1. 安装依赖
+pip install -r requirements.txt
+
+# 2. 配置 API Key（AI 推理需要）
+cp .env.example .env
+# 编辑 .env，填入你的 GEMINI_API_KEY
+
+# 3. 运行
+python app.py              # 格式化 Demo 输出
+python app.py --json       # 原始 JSON 输出
+python app.py --use-mock   # 离线模式（不需要 API key）
+
+# 4. 测试
+python -m pytest -q
+```
+
+> **注意：** 如果 `.env` 中没有有效的 `GEMINI_API_KEY`，系统会自动降级为规则推理。AI 推理需要 [Google Gemini API key](https://aistudio.google.com/apikey)。
 
 ### 文档索引
 - 最终提交计划：`docs/FINAL_MVP_SUBMISSION_PLAN.md`
