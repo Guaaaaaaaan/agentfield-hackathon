@@ -2,9 +2,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import json
+import logging
 import os
 
 from src.common.contracts import InvoiceInput, RiskAssessment
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(slots=True)
@@ -61,7 +64,12 @@ def _ai_risk_assess(invoice: InvoiceInput) -> RiskAssessment:
         "- risk_level must be exactly one of: low, medium, high\n"
         "- confidence must be a float between 0.0 and 1.0\n"
         "- reasons must be a non-empty list of English strings\n"
-        "- Consider: overdue_days, late_payments_180d, amount, customer behavior"
+        "- Consider: overdue_days, late_payments_180d, amount, customer behavior\n"
+        "- Risk level guidelines:\n"
+        "- low: overdue_days <= 14 AND late_payments_180d <= 1 AND amount < 5000\n"
+        "- medium: overdue_days 15-45 OR late_payments_180d 2-4 OR amount >= 5000\n"
+        "- high: overdue_days > 45 OR late_payments_180d >= 5 OR (overdue_days > 30 AND amount >= 5000)\n"
+        "- When in doubt between two levels, choose the lower one"
     )
     user_prompt = (
         f"Invoice ID: {invoice.invoice_id}\n"
@@ -155,8 +163,8 @@ def invoice_risk_reasoner(invoice: InvoiceInput) -> RiskAssessment:
     try:
         result = _ai_risk_assess(invoice)
         result.validate()
-        print(f"[RISK] AI success for {invoice.invoice_id}")
+        logger.debug("[RISK] AI success for %s", invoice.invoice_id)
         return result
     except Exception as exc:
-        print(f"[RISK] AI failed, using fallback: {exc}")
+        logger.debug("[RISK] AI failed, using fallback: %s", exc)
         return _rule_based_risk_assess(invoice)

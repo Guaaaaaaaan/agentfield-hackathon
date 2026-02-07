@@ -2,12 +2,14 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import json
+import logging
 import os
 
 from src.common.contracts import CollectionStrategy, InvoiceInput, RiskAssessment
 
 _VALID_CHANNELS = {"email", "sms", "call_queue"}
 _VALID_TONES = {"gentle", "firm", "urgent"}
+logger = logging.getLogger(__name__)
 
 
 @dataclass(slots=True)
@@ -160,8 +162,8 @@ def collection_strategy_reasoner(invoice: InvoiceInput, risk: RiskAssessment) ->
     try:
         result = _ai_strategy_decide(invoice, risk)
         result.validate()
-        print(f"[STRATEGY] AI success for {invoice.invoice_id}")
+        logger.debug("[STRATEGY] AI success for %s", invoice.invoice_id)
         return result
     except Exception as exc:
-        print(f"[STRATEGY] AI failed, using fallback: {exc}")
+        logger.debug("[STRATEGY] AI failed, using fallback: %s", exc)
         return _rule_based_strategy(invoice, risk)

@@ -6,7 +6,11 @@
     "customer_id": "CUST-101",
     "late_payments_180d": 6,
     "preferred_channel": "call_queue",
-    "language": "en-US"
+    "language": "en-US",
+    "org_name": "Peter Electronics Pte Ltd",
+    "email_address": "peter@peterelectronics.com.sg",
+    "phone_number": "+65 6853 7963",
+    "scheduled_contact_date":"Monday 3pm"
   },
   {
     "invoice_id": "INV-2002",
@@ -15,7 +19,11 @@
     "customer_id": "CUST-102",
     "late_payments_180d": 5,
     "preferred_channel": "email",
-    "language": "en-US"
+    "language": "en-US",
+    "org_name": "Bryan Brothers Trading Pte Ltd",
+    "email_address": "bryan@brybrothers.com.sg",
+    "phone_number": "+65 6528 9515",
+    "scheduled_contact_date":"Monday 8am"
   },
   {
     "invoice_id": "INV-2003",
@@ -24,7 +32,11 @@
     "customer_id": "CUST-103",
     "late_payments_180d": 3,
     "preferred_channel": "sms",
-    "language": "en-US"
+    "language": "en-US",
+    "org_name": "Teo Commercial Pte Ltd",
+    "email_address": "timothy@teocommercials.com.sg",
+    "phone_number": "+65 6836 0952",
+    "scheduled_contact_date":"Wednesday 10am"
   },
   {
     "invoice_id": "INV-2004",
@@ -42,7 +54,11 @@
     "customer_id": "CUST-105",
     "late_payments_180d": 1,
     "preferred_channel": "sms",
-    "language": "en-US"
+    "language": "en-US",
+    "org_name": "Lim and Sons Pte Ltd",
+    "email_address": "joseph@limson.com.sg",
+    "phone_number": "+65 6735 8725",
+    "scheduled_contact_date":"Tuesday 8am"
   },
   {
     "invoice_id": "INV-2006",
@@ -51,6 +67,10 @@
     "customer_id": "CUST-106",
     "late_payments_180d": 0,
     "preferred_channel": "call_queue",
-    "language": "en-US"
+    "language": "en-US",
+    "org_name": "Rowan Cafe Pte Ltd",
+    "email_address": "ro@rowancafe.com.sg",
+    "phone_number": "+65 6729 8356",
+    "scheduled_contact_date":"Monday 2pm"
   }
 ]

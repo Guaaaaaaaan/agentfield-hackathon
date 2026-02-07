@@ -100,15 +100,15 @@ def _print_demo_output(outputs: list[dict[str, Any]]) -> None:
             fallback += 1
 
         print(f"[{idx}/{total}] Invoice: {invoice_id}")
+        print(f"  Organization: {org_name}")
+        print(f"  Email:    {email_address}")
+        print(f"  Phone:    {phone_number}")
         print(f"  Risk:     {risk_level} (confidence: {confidence:.2f})")
         print(f"  Reasons:  {reasons}")
         print(f"  Strategy: channel={channel}, tone={tone}, escalation={str(escalation).lower()}")
         print(f"  Action:   {next_action}")
         print(f"  Status:   {status}")
         print(f"  Trace:    {trace_id}")
-        print(f"  Organization: {org_name}")
-        print(f"  Email:    {email_address}")
-        print(f"  Phone:    {phone_number}")
         print(f"  Scheduled: {scheduled_contact_date}")
         print()
 
@@ -128,11 +128,20 @@ def main() -> None:
     args = parser.parse_args()
 
     risk_fn, strategy_fn, exec_fn = _resolve_runtime(args.use_mock)
-    inputs = _load_inputs(args.input)
+    raw_items = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    if isinstance(raw_items, dict):
+        raw_items = [raw_items]
+    if not isinstance(raw_items, list):
+        raise ValueError("input payload must be a JSON object or list of objects")
+    if not raw_items:
+        raise ValueError("input payload list must not be empty")
+
+    inputs = [_to_invoice_input(item) for item in raw_items]
     logger = AuditLogger()
 
-    outputs = [
-        run_pipeline(
+    results: list[dict[str, Any]] = []
+    for idx, (invoice, raw) in enumerate(zip(inputs, raw_items), start=1):
+        output = run_pipeline(
             invoice=invoice,
             risk_reasoner=risk_fn,
             strategy_reasoner=strategy_fn,
@@ -140,8 +149,11 @@ def main() -> None:
             audit_logger=logger,
             trace_id=f"TRACE-RUN-{idx:03d}-{invoice.invoice_id}",
         )
-        for idx, invoice in enumerate(inputs, start=1)
-    ]
+        for key in ("org_name", "email_address", "phone_number", "scheduled_contact_date"):
+            if key in raw:
+                output[key] = raw[key]
+        results.append(output)
+    outputs = results
     if args.json:
         output: dict[str, Any] | list[dict[str, Any]] = outputs[0] if len(outputs) == 1 else outputs
         print(json.dumps(output, ensure_ascii=True, indent=2))
