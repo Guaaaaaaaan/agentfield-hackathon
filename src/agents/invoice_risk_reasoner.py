@@ -40,7 +40,7 @@ def _parse_json_response(text: str) -> dict[str, object]:
 
 def _ai_risk_assess(invoice: InvoiceInput) -> RiskAssessment:
     try:
-        import google.generativeai as genai
+        from google import genai
     except Exception as exc:  # pragma: no cover
         raise RiskReasoningError("AI_IMPORT_FAILED", str(exc)) from exc
 
@@ -49,10 +49,8 @@ def _ai_risk_assess(invoice: InvoiceInput) -> RiskAssessment:
         raise RiskReasoningError("AI_CONFIG_ERROR", "GEMINI_API_KEY is missing")
 
     model_name = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
-    timeout_sec = int(os.environ.get("REQUEST_TIMEOUT_SEC", "10"))
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(model_name)
+    client = genai.Client(api_key=api_key)
 
     system_prompt = (
         "You are a billing risk assessment engine. Given invoice and customer data,\n"
@@ -74,11 +72,11 @@ def _ai_risk_assess(invoice: InvoiceInput) -> RiskAssessment:
         f"Preferred Channel: {invoice.preferred_channel}"
     )
 
-    response = model.generate_content(
-        f"{system_prompt}\n\n{user_prompt}",
-        request_options={"timeout": timeout_sec},
+    response = client.models.generate_content(
+        model=model_name,
+        contents=f"{system_prompt}\n\n{user_prompt}",
     )
-    raw_text = getattr(response, "text", "") or ""
+    raw_text = response.text or ""
     if not raw_text:
         raise RiskReasoningError("AI_EMPTY_RESPONSE", "empty response text from model")
 
