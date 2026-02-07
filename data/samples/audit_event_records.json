@@ -1,0 +1,116 @@
+[
+  {
+    "event_id": "AUDR-2001",
+    "action_id": "ACT-2001",
+    "trace_id": "TRACE-20260207-2001",
+    "event_type": "execution",
+    "payload_json": {
+      "invoice_id": "INV-2001",
+      "customer_id": "CUST-101",
+      "risk_level": "high",
+      "reasons": [
+        "overdue_days>60",
+        "late_payments_180d>=5"
+      ],
+      "next_action": "assign_priority_collector",
+      "status": "queued"
+    },
+    "language": "en-US",
+    "event_time": "2026-02-07T10:22:00Z"
+  },
+  {
+    "event_id": "AUDR-2002",
+    "action_id": "ACT-2002",
+    "trace_id": "TRACE-20260207-2002",
+    "event_type": "execution",
+    "payload_json": {
+      "invoice_id": "INV-2002",
+      "customer_id": "CUST-102",
+      "risk_level": "high",
+      "reasons": [
+        "overdue_days>45",
+        "late_payments_180d>=4"
+      ],
+      "next_action": "escalate_after_24h",
+      "status": "sent"
+    },
+    "language": "en-US",
+    "event_time": "2026-02-07T10:23:00Z"
+  },
+  {
+    "event_id": "AUDR-2003",
+    "action_id": "ACT-2003",
+    "trace_id": "TRACE-20260207-2003",
+    "event_type": "decision",
+    "payload_json": {
+      "invoice_id": "INV-2003",
+      "customer_id": "CUST-103",
+      "risk_level": "medium",
+      "reasons": [
+        "overdue_days between 15 and 30",
+        "late_payments_180d between 2 and 3"
+      ],
+      "next_action": "remind_after_48h",
+      "status": "queued"
+    },
+    "language": "en-US",
+    "event_time": "2026-02-07T10:24:00Z"
+  },
+  {
+    "event_id": "AUDR-2004",
+    "action_id": "ACT-2004",
+    "trace_id": "TRACE-20260207-2004",
+    "event_type": "decision",
+    "payload_json": {
+      "invoice_id": "INV-2004",
+      "customer_id": "CUST-104",
+      "risk_level": "medium",
+      "reasons": [
+        "overdue_days between 10 and 20",
+        "late_payments_180d>=2"
+      ],
+      "next_action": "remind_after_48h",
+      "status": "queued"
+    },
+    "language": "en-US",
+    "event_time": "2026-02-07T10:25:00Z"
+  },
+  {
+    "event_id": "AUDR-2005",
+    "action_id": "ACT-2005",
+    "trace_id": "TRACE-20260207-2005",
+    "event_type": "decision",
+    "payload_json": {
+      "invoice_id": "INV-2005",
+      "customer_id": "CUST-105",
+      "risk_level": "low",
+      "reasons": [
+        "overdue_days<=7",
+        "collected_ratio_180d>=0.95"
+      ],
+      "next_action": "remind_after_72h",
+      "status": "queued"
+    },
+    "language": "en-US",
+    "event_time": "2026-02-07T10:26:00Z"
+  },
+  {
+    "event_id": "AUDR-2006",
+    "action_id": "ACT-2006",
+    "trace_id": "TRACE-20260207-2006",
+    "event_type": "decision",
+    "payload_json": {
+      "invoice_id": "INV-2006",
+      "customer_id": "CUST-106",
+      "risk_level": "low",
+      "reasons": [
+        "overdue_days==0",
+        "late_payments_180d==0"
+      ],
+      "next_action": "monitor_until_due_plus_3d",
+      "status": "queued"
+    },
+    "language": "en-US",
+    "event_time": "2026-02-07T10:27:00Z"
+  }
+]

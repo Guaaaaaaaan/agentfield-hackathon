@@ -1,0 +1,50 @@
+[
+  {
+    "invoice_id": "INV-2001",
+    "overdue_days": 70,
+    "amount": 15200.0,
+    "customer_id": "CUST-101",
+    "late_payments_180d": 6,
+    "preferred_channel": "call_queue"
+  },
+  {
+    "invoice_id": "INV-2002",
+    "overdue_days": 56,
+    "amount": 9800.0,
+    "customer_id": "CUST-102",
+    "late_payments_180d": 5,
+    "preferred_channel": "email"
+  },
+  {
+    "invoice_id": "INV-2003",
+    "overdue_days": 29,
+    "amount": 4300.0,
+    "customer_id": "CUST-103",
+    "late_payments_180d": 3,
+    "preferred_channel": "sms"
+  },
+  {
+    "invoice_id": "INV-2004",
+    "overdue_days": 18,
+    "amount": 2750.0,
+    "customer_id": "CUST-104",
+    "late_payments_180d": 2,
+    "preferred_channel": "email"
+  },
+  {
+    "invoice_id": "INV-2005",
+    "overdue_days": 4,
+    "amount": 910.0,
+    "customer_id": "CUST-105",
+    "late_payments_180d": 1,
+    "preferred_channel": "sms"
+  },
+  {
+    "invoice_id": "INV-2006",
+    "overdue_days": 0,
+    "amount": 1250.0,
+    "customer_id": "CUST-106",
+    "late_payments_180d": 0,
+    "preferred_channel": "call_queue"
+  }
+]

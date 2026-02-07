@@ -1,0 +1,26 @@
+[
+  {
+    "snapshot_id": "SNAP-001",
+    "customer_id": "CUST-001",
+    "avg_days_to_pay": 34.5,
+    "late_payments_180d": 4,
+    "collected_ratio_180d": 0.82,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-002",
+    "customer_id": "CUST-002",
+    "avg_days_to_pay": 8.0,
+    "late_payments_180d": 1,
+    "collected_ratio_180d": 0.98,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-003",
+    "customer_id": "CUST-003",
+    "avg_days_to_pay": 47.2,
+    "late_payments_180d": 6,
+    "collected_ratio_180d": 0.63,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  }
+]

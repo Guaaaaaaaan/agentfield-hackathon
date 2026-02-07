@@ -1,0 +1,50 @@
+[
+  {
+    "snapshot_id": "SNAP-2001",
+    "customer_id": "CUST-101",
+    "avg_days_to_pay": 45.2,
+    "late_payments_180d": 6,
+    "collected_ratio_180d": 0.62,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-2002",
+    "customer_id": "CUST-102",
+    "avg_days_to_pay": 38.4,
+    "late_payments_180d": 5,
+    "collected_ratio_180d": 0.71,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-2003",
+    "customer_id": "CUST-103",
+    "avg_days_to_pay": 26.0,
+    "late_payments_180d": 3,
+    "collected_ratio_180d": 0.83,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-2004",
+    "customer_id": "CUST-104",
+    "avg_days_to_pay": 19.5,
+    "late_payments_180d": 2,
+    "collected_ratio_180d": 0.9,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-2005",
+    "customer_id": "CUST-105",
+    "avg_days_to_pay": 7.2,
+    "late_payments_180d": 1,
+    "collected_ratio_180d": 0.97,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  },
+  {
+    "snapshot_id": "SNAP-2006",
+    "customer_id": "CUST-106",
+    "avg_days_to_pay": 5.0,
+    "late_payments_180d": 0,
+    "collected_ratio_180d": 0.99,
+    "snapshot_time": "2026-02-07T09:00:00Z"
+  }
+]

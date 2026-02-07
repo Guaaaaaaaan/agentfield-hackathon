@@ -1,0 +1,62 @@
+[
+  {
+    "invoice_id": "INV-1001",
+    "customer_id": "CUST-001",
+    "amount_due": 12500.0,
+    "currency": "USD",
+    "overdue_days": 52,
+    "due_date": "2025-12-17T00:00:00Z",
+    "invoice_status": "overdue",
+    "created_at": "2025-11-17T00:00:00Z"
+  },
+  {
+    "invoice_id": "INV-1002",
+    "customer_id": "CUST-001",
+    "amount_due": 4600.0,
+    "currency": "USD",
+    "overdue_days": 19,
+    "due_date": "2026-01-19T00:00:00Z",
+    "invoice_status": "overdue",
+    "created_at": "2025-12-20T00:00:00Z"
+  },
+  {
+    "invoice_id": "INV-1003",
+    "customer_id": "CUST-002",
+    "amount_due": 830.0,
+    "currency": "USD",
+    "overdue_days": 4,
+    "due_date": "2026-02-03T00:00:00Z",
+    "invoice_status": "overdue",
+    "created_at": "2026-01-03T00:00:00Z"
+  },
+  {
+    "invoice_id": "INV-1004",
+    "customer_id": "CUST-003",
+    "amount_due": 9900.0,
+    "currency": "USD",
+    "overdue_days": 68,
+    "due_date": "2025-12-01T00:00:00Z",
+    "invoice_status": "overdue",
+    "created_at": "2025-11-01T00:00:00Z"
+  },
+  {
+    "invoice_id": "INV-1005",
+    "customer_id": "CUST-003",
+    "amount_due": 2100.0,
+    "currency": "USD",
+    "overdue_days": 36,
+    "due_date": "2026-01-02T00:00:00Z",
+    "invoice_status": "overdue",
+    "created_at": "2025-12-02T00:00:00Z"
+  },
+  {
+    "invoice_id": "INV-1006",
+    "customer_id": "CUST-002",
+    "amount_due": 1750.0,
+    "currency": "USD",
+    "overdue_days": 0,
+    "due_date": "2026-02-10T00:00:00Z",
+    "invoice_status": "open",
+    "created_at": "2026-01-10T00:00:00Z"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "risk_id": "RISK-2001",
+    "invoice_id": "INV-2001",
+    "risk_level": "high",
+    "confidence": 0.93,
+    "reasons_json": [
+      "overdue_days>60",
+      "late_payments_180d>=5"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:10:00Z"
+  },
+  {
+    "risk_id": "RISK-2002",
+    "invoice_id": "INV-2002",
+    "risk_level": "high",
+    "confidence": 0.88,
+    "reasons_json": [
+      "overdue_days>45",
+      "late_payments_180d>=4"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:11:00Z"
+  },
+  {
+    "risk_id": "RISK-2003",
+    "invoice_id": "INV-2003",
+    "risk_level": "medium",
+    "confidence": 0.78,
+    "reasons_json": [
+      "overdue_days between 15 and 30",
+      "late_payments_180d between 2 and 3"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:12:00Z"
+  },
+  {
+    "risk_id": "RISK-2004",
+    "invoice_id": "INV-2004",
+    "risk_level": "medium",
+    "confidence": 0.72,
+    "reasons_json": [
+      "overdue_days between 10 and 20",
+      "late_payments_180d>=2"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:13:00Z"
+  },
+  {
+    "risk_id": "RISK-2005",
+    "invoice_id": "INV-2005",
+    "risk_level": "low",
+    "confidence": 0.89,
+    "reasons_json": [
+      "overdue_days<=7",
+      "collected_ratio_180d>=0.95"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:14:00Z"
+  },
+  {
+    "risk_id": "RISK-2006",
+    "invoice_id": "INV-2006",
+    "risk_level": "low",
+    "confidence": 0.92,
+    "reasons_json": [
+      "overdue_days==0",
+      "late_payments_180d==0"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:15:00Z"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "strategy_id": "STR-2001",
+    "risk_id": "RISK-2001",
+    "channel": "call_queue",
+    "tone": "urgent",
+    "next_action": "assign_priority_collector",
+    "escalation": true,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:16:00Z"
+  },
+  {
+    "strategy_id": "STR-2002",
+    "risk_id": "RISK-2002",
+    "channel": "email",
+    "tone": "urgent",
+    "next_action": "escalate_after_24h",
+    "escalation": true,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:17:00Z"
+  },
+  {
+    "strategy_id": "STR-2003",
+    "risk_id": "RISK-2003",
+    "channel": "email",
+    "tone": "firm",
+    "next_action": "remind_after_48h",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:18:00Z"
+  },
+  {
+    "strategy_id": "STR-2004",
+    "risk_id": "RISK-2004",
+    "channel": "sms",
+    "tone": "firm",
+    "next_action": "remind_after_48h",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:19:00Z"
+  },
+  {
+    "strategy_id": "STR-2005",
+    "risk_id": "RISK-2005",
+    "channel": "sms",
+    "tone": "gentle",
+    "next_action": "remind_after_72h",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:20:00Z"
+  },
+  {
+    "strategy_id": "STR-2006",
+    "risk_id": "RISK-2006",
+    "channel": "call_queue",
+    "tone": "gentle",
+    "next_action": "monitor_until_due_plus_3d",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:21:00Z"
+  }
+]

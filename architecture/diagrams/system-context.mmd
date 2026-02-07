@@ -1,0 +1,7 @@
+flowchart TD
+    Ops[Billing Ops] --> API[App Entry / Orchestrator]
+    API --> R1[invoice_risk_reasoner]
+    API --> R2[collection_strategy_reasoner]
+    API --> S1[execute_and_audit_skill]
+    API --> Store[(Audit Store)]
+    API --> Data[(Sample Data / DB Adapter)]

@@ -1,0 +1,56 @@
+[
+  {
+    "invoice_id": "INV-1001",
+    "channel": "email",
+    "tone": "firm",
+    "next_action": "escalate_after_24h",
+    "escalation": true,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:30:01Z"
+  },
+  {
+    "invoice_id": "INV-1004",
+    "channel": "call_queue",
+    "tone": "urgent",
+    "next_action": "assign_priority_collector",
+    "escalation": true,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:30:31Z"
+  },
+  {
+    "invoice_id": "INV-1002",
+    "channel": "email",
+    "tone": "firm",
+    "next_action": "remind_after_48h",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:31:01Z"
+  },
+  {
+    "invoice_id": "INV-1003",
+    "channel": "sms",
+    "tone": "gentle",
+    "next_action": "remind_after_72h",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:31:31Z"
+  },
+  {
+    "invoice_id": "INV-1005",
+    "channel": "email",
+    "tone": "firm",
+    "next_action": "remind_after_48h",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:32:01Z"
+  },
+  {
+    "invoice_id": "INV-1006",
+    "channel": "sms",
+    "tone": "gentle",
+    "next_action": "monitor_until_due_plus_3d",
+    "escalation": false,
+    "language": "en-US",
+    "generated_at": "2026-02-07T10:32:31Z"
+  }
+]

@@ -1,0 +1,8 @@
+flowchart LR
+    A[Overdue Invoice] --> B[invoice_risk_reasoner]
+    B --> C[RiskAssessment]
+    C --> D[collection_strategy_reasoner]
+    D --> E[CollectionStrategy]
+    E --> F[execute_and_audit_skill]
+    F --> G[ExecutionAction]
+    F --> H[AuditEvent]

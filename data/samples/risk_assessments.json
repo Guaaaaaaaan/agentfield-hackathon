@@ -1,0 +1,68 @@
+[
+  {
+    "invoice_id": "INV-1001",
+    "risk_level": "high",
+    "confidence": 0.91,
+    "reasons": [
+      "overdue_days>45",
+      "late_payments_180d>=3"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:30:00Z"
+  },
+  {
+    "invoice_id": "INV-1004",
+    "risk_level": "high",
+    "confidence": 0.89,
+    "reasons": [
+      "overdue_days>60",
+      "disputes_count_180d>=2"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:30:30Z"
+  },
+  {
+    "invoice_id": "INV-1002",
+    "risk_level": "medium",
+    "confidence": 0.75,
+    "reasons": [
+      "overdue_days between 15 and 30",
+      "late_payments_180d between 2 and 4"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:31:00Z"
+  },
+  {
+    "invoice_id": "INV-1005",
+    "risk_level": "medium",
+    "confidence": 0.79,
+    "reasons": [
+      "overdue_days between 30 and 45",
+      "late_payments_180d between 2 and 4"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:31:30Z"
+  },
+  {
+    "invoice_id": "INV-1003",
+    "risk_level": "low",
+    "confidence": 0.87,
+    "reasons": [
+      "overdue_days<=7",
+      "collected_ratio_180d>=0.95"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:32:00Z"
+  },
+  {
+    "invoice_id": "INV-1006",
+    "risk_level": "low",
+    "confidence": 0.9,
+    "reasons": [
+      "overdue_days==0",
+      "recent_payment_behavior_stable"
+    ],
+    "language": "en-US",
+    "assessed_at": "2026-02-07T10:32:30Z"
+  }
+]
